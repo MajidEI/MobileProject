@@ -1,0 +1,67 @@
+<resources>
+    <string name="app_name">DrugStore</string>
+    <string name="title_home">Today</string>
+    <string name="title_medbox">Meds</string>
+    <string name="btnAdd">DONE</string>
+    <string name="insert_name">Type the name of the med</string>
+    <string name="err_msg_name">Name cannot be null!</string>
+    <string name="edit">edit</string>
+    <string name="deleteIcon">delete</string>
+    <string name="txtMedName">Medicament Name</string>
+    <string name="txtScheduleTitle">Treatment Schedule</string>
+    <string name="txtStartAt">Start at:</string>
+    <string name="txtDurationTitle">Duration</string>
+    <string name="txtRdbContinuous">Continuous</string>
+    <string name="txtRdbNumberOfDays">Number of days</string>
+    <string name="txtFrequencyTitle">Frequency</string>
+    <string name="txtRdbEveryDay">Every day</string>
+    <string name="txtRdbSpecDays">Specific days of week</string>
+    <string name="txtRdbIntervalDays">Days Interval</string>
+    <string name="txtSetDaysIntervalTitle">Set days interval</string>
+    <string name="CANCEL">CANCEL</string>
+    <string name="SET">SET</string>
+    <string name="txtSelectQuantityTitle">Select quantity</string>
+    <string name="OK">OK</string>
+    <string name="txtActiveTitle">Active meds</string>
+    <string name="setNumberOfDaysTitle">Set number of days</string>
+    <string name="pickDaysTitle">Pick Days</string>
+    <string name="txtSunday">Sunday</string>
+    <string name="txtMonday">Monday</string>
+    <string name="txtTuesday">Tuesday</string>
+    <string name="txtWednesday">Wednesday</string>
+    <string name="txtThursday">Thursday</string>
+    <string name="txtFriday">Friday</string>
+    <string name="txtSaturday">Saturday</string>
+    <string name="txtRemindersTitle">Reminders</string>
+    <string name="txtMedsUnit">Unit(s)</string>
+    <string name="txtBtnToday">Today</string>
+    <string name="txtOnToolbar">on this day</string>
+    <string name="addMedicamentTitle">Add Medicament</string>
+    <string name="quit">Quit</string>
+    <string name="quitMessage">Are you sure you want to quit without saving?</string>
+    <string name="editt">Edit</string>
+    <string name="txtInActiveTitle">Inactive meds</string>
+    <string name="Description">Description:</string>
+    <string name="txtInfoMed">No information about this med.</string>
+    <string name="delete">Delete</string>
+    <string name="deleteMsg">Are you sure you want to delete this med?</string>
+    <string name="notificationTitle">Med Time!</string>
+    <string name="notificationText">It is time to take the med. Take care for your health!</string>
+    <string name="txtTapToAdd">Tap to add your medicine.</string>
+    <string name="search">Search</string>
+
+    <string-array name="android_dropdown_reminders">
+        <item>Once a day</item>
+        <item>Twice a day</item>
+        <item>3 times a day</item>
+        <item>4 times a day</item>
+        <item>5 times a day</item>
+        <item>6 times a day</item>
+        <item>7 times a day</item>
+        <item>8 times a day</item>
+        <item>9 times a day</item>
+        <item>10 times a day</item>
+        <item>11 times a day</item>
+        <item>12 times a day</item>
+    </string-array>
+</resources>

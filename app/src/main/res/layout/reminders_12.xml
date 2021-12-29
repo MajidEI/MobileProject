@@ -1,0 +1,524 @@
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_reminders"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="5dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginRight="5dp"
+    card_view:cardBackgroundColor="@color/background"
+    card_view:cardCornerRadius="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <TextView
+            android:id="@+id/reminder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@string/txtRemindersTitle"
+            android:textColor="@android:color/black"
+            android:textStyle="bold" />
+
+
+        <Spinner
+            android:id="@+id/spinner_reminder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:entries="@array/android_dropdown_reminders"
+            android:minHeight="48dp"
+            android:textAlignment="textStart" />
+
+        <LinearLayout
+            android:id="@+id/timeReminder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/timePicker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="15dp"
+                android:background="@android:color/transparent"
+                android:minWidth="60dp"
+                android:text="8:30"
+                android:textAlignment="textStart"
+                android:textColor="@color/textcolor"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/quantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@android:color/transparent"
+                android:text="Take 1.0"
+                android:textColor="@color/textcolor"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textReminders"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="5dp"
+                android:background="@android:color/transparent"
+                android:text="@string/txtMedsUnit"
+                android:textColor="@color/textcolor"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/timeReminder2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/timePicker2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:background="@android:color/transparent"
+                android:minWidth="60dp"
+                android:text="8:30"
+                android:textAlignment="textStart"
+                android:textColor="@color/textcolor"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/quantity2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="Take 1.0"
+                android:textColor="@color/textcolor"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textReminders2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="5dp"
+                android:background="@android:color/transparent"
+                android:text="@string/txtMedsUnit"
+                android:textColor="@color/textcolor"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/timeReminder3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/timePicker3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:background="@android:color/transparent"
+                android:minWidth="60dp"
+                android:text="8:30"
+                android:textAlignment="textStart"
+                android:textColor="@color/textcolor"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/quantity3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="Take 1.0"
+                android:textColor="@color/textcolor"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textReminders3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="5dp"
+                android:background="@android:color/transparent"
+                android:text="@string/txtMedsUnit"
+                android:textColor="@color/textcolor"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/timeReminder4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/timePicker4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:background="@android:color/transparent"
+                android:minWidth="60dp"
+                android:text="8:30"
+                android:textAlignment="textStart"
+                android:textColor="@color/textcolor"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/quantity4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="Take 1.0"
+                android:textColor="@color/textcolor"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textReminders4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="5dp"
+                android:background="@android:color/transparent"
+                android:text="@string/txtMedsUnit"
+                android:textColor="@color/textcolor"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/timeReminder5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/timePicker5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:background="@android:color/transparent"
+                android:minWidth="60dp"
+                android:text="8:30"
+                android:textAlignment="textStart"
+                android:textColor="@color/textcolor"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/quantity5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="Take 1.0"
+                android:textColor="@color/textcolor"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textReminders5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="5dp"
+                android:background="@android:color/transparent"
+                android:text="@string/txtMedsUnit"
+                android:textColor="@color/textcolor"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/timeReminder6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/timePicker6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:background="@android:color/transparent"
+                android:minWidth="60dp"
+                android:text="8:30"
+                android:textAlignment="textStart"
+                android:textColor="@color/textcolor"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/quantity6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="Take 1.0"
+                android:textColor="@color/textcolor"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textReminders6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="5dp"
+                android:background="@android:color/transparent"
+                android:text="@string/txtMedsUnit"
+                android:textColor="@color/textcolor"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/timeReminder7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/timePicker7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:background="@android:color/transparent"
+                android:minWidth="60dp"
+                android:text="8:30"
+                android:textAlignment="textStart"
+                android:textColor="@color/textcolor"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/quantity7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="Take 1.0"
+                android:textColor="@color/textcolor"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textReminders7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="5dp"
+                android:background="@android:color/transparent"
+                android:text="@string/txtMedsUnit"
+                android:textColor="@color/textcolor"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/timeReminder8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/timePicker8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:background="@android:color/transparent"
+                android:minWidth="60dp"
+                android:text="8:30"
+                android:textAlignment="textStart"
+                android:textColor="@color/textcolor"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/quantity8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="Take 1.0"
+                android:textColor="@color/textcolor"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textReminders8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="5dp"
+                android:background="@android:color/transparent"
+                android:text="@string/txtMedsUnit"
+                android:textColor="@color/textcolor"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/timeReminder9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/timePicker9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:background="@android:color/transparent"
+                android:minWidth="60dp"
+                android:text="8:30"
+                android:textAlignment="textStart"
+                android:textColor="@color/textcolor"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/quantity9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="Take 1.0"
+                android:textColor="@color/textcolor"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textReminders9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="5dp"
+                android:background="@android:color/transparent"
+                android:text="@string/txtMedsUnit"
+                android:textColor="@color/textcolor"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/timeReminder10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/timePicker10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:background="@android:color/transparent"
+                android:minWidth="60dp"
+                android:text="8:30"
+                android:textAlignment="textStart"
+                android:textColor="@color/textcolor"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/quantity10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="Take 1.0"
+                android:textColor="@color/textcolor"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textReminders10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="5dp"
+                android:background="@android:color/transparent"
+                android:text="@string/txtMedsUnit"
+                android:textColor="@color/textcolor"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/timeReminder11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/timePicker11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:background="@android:color/transparent"
+                android:minWidth="60dp"
+                android:text="8:30"
+                android:textAlignment="textStart"
+                android:textColor="@color/textcolor"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/quantity11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="Take 1.0"
+                android:textColor="@color/textcolor"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textReminders11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="5dp"
+                android:background="@android:color/transparent"
+                android:text="@string/txtMedsUnit"
+                android:textColor="@color/textcolor"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/timeReminder12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/timePicker12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:background="@android:color/transparent"
+                android:minWidth="60dp"
+                android:text="8:30"
+                android:textAlignment="textStart"
+                android:textColor="@color/textcolor"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/quantity12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="Take 1.0"
+                android:textColor="@color/textcolor"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textReminders12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="5dp"
+                android:background="@android:color/transparent"
+                android:text="@string/txtMedsUnit"
+                android:textColor="@color/textcolor"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>

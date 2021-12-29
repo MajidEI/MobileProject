@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<color name="colorPrimary">#063442</color>
+<color name="colorSec">#90063442</color>
+<color name="colorPrimaryDark">#064E0A</color>
+<color name="background">#ffffff</color>
+<color name="colorAccent">#63ccff</color>
+<color name="colorNavIcon">#dae9f6</color>
+<color name="colorNavText">#01294b</color>
+<color name="circle">#d0ecfd</color>
+<color name="takenColor">#dddddd</color>
+<color name="med">#338D85</color>
+<color name="textcolor">#479158</color>
+</resources>

@@ -1,0 +1,248 @@
+<html>
+<head>
+<title>MainActivity.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+MainActivity.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">ma.ensa.drugstore.activity</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">android.app.DatePickerDialog</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.content.Intent</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.content.res.Configuration</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.content.res.Resources</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.support.annotation.NonNull</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.support.constraint.ConstraintLayout</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.support.design.widget.BottomNavigationView</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.support.v4.app.Fragment</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.support.v7.app.AppCompatActivity</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.os.Bundle</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.support.v7.widget.LinearLayoutManager</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.support.v7.widget.RecyclerView</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.support.v7.widget.Toolbar</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.util.DisplayMetrics</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.view.KeyEvent</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.view.MenuItem</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.view.View</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.view.animation.AlphaAnimation</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.DatePicker</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.ImageView</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.TextView</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">java.text.SimpleDateFormat</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.util.ArrayList</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.util.Calendar</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.util.Date</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.util.Locale</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">ma.ensa.drugstore.R</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">ma.ensa.drugstore.adapter.HomeAdapter</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">ma.ensa.drugstore.database.Database</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">de.hdodenhof.circleimageview.CircleImageView</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">ma.ensa.drugstore.fragment.HomeFragment</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">ma.ensa.drugstore.fragment.MedsFragment</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">ma.ensa.drugstore.model.HomeResult</span><span class="s0">;</span>
+
+<span class="s0">public class </span><span class="s1">MainActivity </span><span class="s0">extends </span><span class="s1">AppCompatActivity </span><span class="s0">implements </span><span class="s1">BottomNavigationView.OnNavigationItemSelectedListener {</span>
+
+    <span class="s0">int </span><span class="s1">year</span><span class="s0">;</span>
+    <span class="s0">int </span><span class="s1">month</span><span class="s0">;</span>
+    <span class="s0">int </span><span class="s1">dayOfMonth</span><span class="s0">;</span>
+    <span class="s1">Calendar calendar</span><span class="s0">;</span>
+    <span class="s1">BottomNavigationView navigation</span><span class="s0">;</span>
+    <span class="s1">Toolbar toolbar</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">ArrayList&lt;String&gt; pillNameData = </span><span class="s0">new </span><span class="s1">ArrayList&lt;String&gt;()</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">ArrayList&lt;Integer&gt; pillPhotoData = </span><span class="s0">new </span><span class="s1">ArrayList&lt;Integer&gt;()</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">ArrayList&lt;String&gt; pillTime = </span><span class="s0">new </span><span class="s1">ArrayList&lt;String&gt;()</span><span class="s0">;</span>
+    <span class="s1">TextView selectDate</span><span class="s0">, </span><span class="s1">txtNoMeds</span><span class="s0">;</span>
+    <span class="s1">CircleImageView imgPillHome</span><span class="s0">;</span>
+    <span class="s1">TextView txtPillTime</span><span class="s0">;</span>
+    <span class="s1">TextView searchinp</span><span class="s0">;</span>
+    <span class="s1">DatePickerDialog datePickerDialog</span><span class="s0">;</span>
+    <span class="s1">ImageView imgSelectDate</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">RecyclerView recyclerView</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">HomeAdapter adapter</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">RecyclerView.LayoutManager layoutManager</span><span class="s0">;</span>
+    <span class="s0">public static </span><span class="s1">String[] monthName = {</span><span class="s2">&quot;Jan&quot;</span><span class="s0">, </span><span class="s2">&quot;Feb&quot;</span><span class="s0">,</span><span class="s2">&quot;Mar&quot;</span><span class="s0">, </span><span class="s2">&quot;Apr&quot;</span><span class="s0">, </span><span class="s2">&quot;May&quot;</span><span class="s0">, </span><span class="s2">&quot;Jun&quot;</span><span class="s0">, </span><span class="s2">&quot;Jul&quot;</span><span class="s0">,</span><span class="s2">&quot;Aug&quot;</span><span class="s0">, </span><span class="s2">&quot;Sep&quot;</span><span class="s0">, </span><span class="s2">&quot;Oct&quot;</span><span class="s0">, </span><span class="s2">&quot;Nov&quot;</span><span class="s0">,</span><span class="s2">&quot;Dec&quot;</span><span class="s1">}</span><span class="s0">;</span>
+    <span class="s1">TextView txtPillHomeName</span><span class="s0">, </span><span class="s1">txtArrow</span><span class="s0">;</span>
+    <span class="s1">Database db</span><span class="s0">;</span>
+
+    <span class="s1">@Override</span>
+    <span class="s0">protected void </span><span class="s1">onCreate(Bundle savedInstanceState) {</span>
+        <span class="s0">super</span><span class="s1">.onCreate(savedInstanceState)</span><span class="s0">;</span>
+        <span class="s1">setContentView(R.layout.activity_main)</span><span class="s0">;</span>
+        <span class="s1">ConstraintLayout layout =  findViewById(R.id.container)</span><span class="s0">;</span>
+        <span class="s1">AlphaAnimation animation = </span><span class="s0">new </span><span class="s1">AlphaAnimation(</span><span class="s3">0.0f </span><span class="s0">, </span><span class="s3">1.0f </span><span class="s1">) </span><span class="s0">;</span>
+        <span class="s1">animation.setFillAfter(</span><span class="s0">true</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">animation.setDuration(</span><span class="s3">1200</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">layout.startAnimation(animation)</span><span class="s0">;</span>
+        <span class="s1">loadFragment(</span><span class="s0">new </span><span class="s1">HomeFragment())</span><span class="s0">;</span>
+        <span class="s1">txtPillHomeName = findViewById(R.id.txMedHomeName)</span><span class="s0">;</span>
+        <span class="s1">imgPillHome = findViewById(R.id.imgMedHome)</span><span class="s0">;</span>
+        <span class="s1">txtPillTime = findViewById(R.id.txtTimeHome)</span><span class="s0">;</span>
+        <span class="s1">navigation = findViewById(R.id.bottom_navigation)</span><span class="s0">;</span>
+        <span class="s1">toolbar = findViewById(R.id.toolbar)</span><span class="s0">;</span>
+        <span class="s1">selectDate = findViewById(R.id.btnDate)</span><span class="s0">;</span>
+        <span class="s1">imgSelectDate = findViewById(R.id.imgSelectDate)</span><span class="s0">;</span>
+        <span class="s1">txtNoMeds = findViewById(R.id.txtNoMeds)</span><span class="s0">;</span>
+        <span class="s1">txtArrow = findViewById(R.id.txtArrow)</span><span class="s0">;</span>
+        <span class="s1">searchinp = findViewById(R.id.searchinput)</span><span class="s0">;</span>
+        <span class="s1">setSupportActionBar(toolbar)</span><span class="s0">;</span>
+        <span class="s1">Date date = Calendar.getInstance().getTime()</span><span class="s0">;</span>
+        <span class="s1">SimpleDateFormat formatter = </span><span class="s0">new </span><span class="s1">SimpleDateFormat(</span><span class="s2">&quot;yyyy/MM/dd&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">initPillList(formatter.format(date))</span><span class="s0">;</span>
+        <span class="s1">recyclerView = findViewById(R.id.recycler_view_home)</span><span class="s0">;</span>
+        <span class="s1">adapter = </span><span class="s0">new </span><span class="s1">HomeAdapter(MainActivity.</span><span class="s0">this, </span><span class="s1">pillPhotoData</span><span class="s0">, </span><span class="s1">pillNameData</span><span class="s0">, </span><span class="s1">pillTime)</span><span class="s0">;</span>
+        <span class="s1">recyclerView.setAdapter(adapter)</span><span class="s0">;</span>
+        <span class="s1">layoutManager = </span><span class="s0">new </span><span class="s1">LinearLayoutManager(MainActivity.</span><span class="s0">this</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">recyclerView.setLayoutManager(layoutManager)</span><span class="s0">;</span>
+        <span class="s0">if</span><span class="s1">(pillNameData.isEmpty()) {</span>
+            <span class="s1">txtNoMeds.setText(</span><span class="s2">&quot;No Meds&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">txtArrow.setVisibility(View.VISIBLE)</span><span class="s0">;</span>
+        <span class="s1">}</span>
+        <span class="s1">navigation.setOnNavigationItemSelectedListener(</span><span class="s0">this</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">selectDate.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">onClick(View view) {</span>
+                <span class="s1">selectDate()</span><span class="s0">;</span>
+            <span class="s1">}</span>
+        <span class="s1">})</span><span class="s0">;</span>
+        <span class="s1">imgSelectDate.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">onClick(View view) {</span>
+                <span class="s1">selectDate()</span><span class="s0">;</span>
+            <span class="s1">}</span>
+        <span class="s1">})</span><span class="s0">;</span>
+        <span class="s1">searchinp.setOnKeyListener(</span><span class="s0">new </span><span class="s1">View.OnKeyListener() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public boolean </span><span class="s1">onKey(View v</span><span class="s0">, int </span><span class="s1">keyCode</span><span class="s0">, </span><span class="s1">KeyEvent event) {</span>
+                <span class="s1">searchMeds()</span><span class="s0">;</span>
+                <span class="s0">return false;</span>
+            <span class="s1">}</span>
+        <span class="s1">})</span><span class="s0">;</span>
+    <span class="s1">}</span>
+    <span class="s1">@Override</span>
+    <span class="s0">public void </span><span class="s1">onResume() {</span>
+        <span class="s0">super</span><span class="s1">.onResume()</span><span class="s0">;</span>
+    <span class="s1">}</span>
+    <span class="s0">public void </span><span class="s1">setLocale(String lang) {</span>
+        <span class="s1">Locale myLocale = </span><span class="s0">new </span><span class="s1">Locale(lang)</span><span class="s0">;</span>
+        <span class="s1">Resources res = getResources()</span><span class="s0">;</span>
+        <span class="s1">DisplayMetrics dm = res.getDisplayMetrics()</span><span class="s0">;</span>
+        <span class="s1">Configuration conf = res.getConfiguration()</span><span class="s0">;</span>
+        <span class="s1">conf.locale = myLocale</span><span class="s0">;</span>
+        <span class="s1">res.updateConfiguration(conf</span><span class="s0">, </span><span class="s1">dm)</span><span class="s0">;</span>
+        <span class="s1">Intent refresh = </span><span class="s0">new </span><span class="s1">Intent(</span><span class="s0">this, </span><span class="s1">MainActivity.</span><span class="s0">class</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">startActivity(refresh)</span><span class="s0">;</span>
+        <span class="s1">finish()</span><span class="s0">;</span>
+    <span class="s1">}</span>
+    <span class="s0">public void </span><span class="s1">searchMeds(){</span>
+        <span class="s1">String tmp = searchinp.getText().toString()</span><span class="s0">;</span>
+        <span class="s1">System.out.println(tmp)</span><span class="s0">;</span>
+        <span class="s1">pillNameData.clear()</span><span class="s0">;</span>
+        <span class="s1">pillTime.clear()</span><span class="s0">;</span>
+        <span class="s1">pillPhotoData.clear()</span><span class="s0">;</span>
+        <span class="s0">try </span><span class="s1">{</span>
+            <span class="s1">db = </span><span class="s0">new </span><span class="s1">Database(</span><span class="s0">this</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">ArrayList&lt;HomeResult&gt; homeResults = </span><span class="s0">new </span><span class="s1">ArrayList&lt;HomeResult&gt;()</span><span class="s0">;</span>
+            <span class="s0">if</span><span class="s1">(tmp.isEmpty()){</span>
+                <span class="s1">homeResults = db.getPills()</span><span class="s0">;</span>
+            <span class="s1">}</span><span class="s0">else</span><span class="s1">{</span>
+                <span class="s1">homeResults = db.getPillsByName(tmp)</span><span class="s0">;</span>
+            <span class="s1">}</span>
+            <span class="s1">System.out.println(</span><span class="s2">&quot;tmp = &quot;</span><span class="s1">+tmp)</span><span class="s0">;</span>
+            <span class="s0">for </span><span class="s1">(HomeResult pill : homeResults) {</span>
+                <span class="s0">if</span><span class="s1">(pill.getFrequency().equals(</span><span class="s2">&quot;Everyday&quot;</span><span class="s1">)) {</span>
+                    <span class="s1">System.out.println(pill.getMedName())</span><span class="s0">;</span>
+                    <span class="s1">pillNameData.add(pill.getMedName())</span><span class="s0">;</span>
+                    <span class="s1">pillPhotoData.add(pill.getPhotoId())</span><span class="s0">;</span>
+                    <span class="s1">pillTime.add(pill.getTime())</span><span class="s0">;</span>
+                <span class="s1">}</span>
+            <span class="s1">}</span>
+            <span class="s1">recyclerView.setAdapter(adapter)</span><span class="s0">;</span>
+            <span class="s1">recyclerView.setLayoutManager(layoutManager)</span><span class="s0">;</span>
+            <span class="s1">db.close()</span><span class="s0">;</span>
+        <span class="s1">} </span><span class="s0">catch </span><span class="s1">(Exception e) {</span>
+            <span class="s1">System.err.println(e)</span><span class="s0">;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+    <span class="s0">public void </span><span class="s1">selectDate() {</span>
+        <span class="s1">calendar = Calendar.getInstance()</span><span class="s0">;</span>
+        <span class="s1">year = calendar.get(Calendar.YEAR)</span><span class="s0">;</span>
+        <span class="s1">month = calendar.get(Calendar.MONTH)</span><span class="s0">;</span>
+        <span class="s1">dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH)</span><span class="s0">;</span>
+        <span class="s1">datePickerDialog = </span><span class="s0">new </span><span class="s1">DatePickerDialog(MainActivity.</span><span class="s0">this,</span>
+                <span class="s0">new </span><span class="s1">DatePickerDialog.OnDateSetListener() {</span>
+                    <span class="s1">@Override</span>
+                    <span class="s0">public void </span><span class="s1">onDateSet(DatePicker datePicker</span><span class="s0">, int </span><span class="s1">year</span><span class="s0">, int </span><span class="s1">month</span><span class="s0">, int </span><span class="s1">day) {</span>
+                        <span class="s1">selectDate.setText(monthName[month] + </span><span class="s2">&quot; &quot; </span><span class="s1">+ day)</span><span class="s0">;</span>
+                        <span class="s1">String date = year + </span><span class="s2">&quot;/&quot; </span><span class="s1">+ (month+</span><span class="s3">1</span><span class="s1">) + </span><span class="s2">&quot;/&quot; </span><span class="s1">+ day</span><span class="s0">;</span>
+                        <span class="s1">initPillList(date)</span><span class="s0">;</span>
+                    <span class="s1">}</span>
+                <span class="s1">}</span><span class="s0">, </span><span class="s1">year</span><span class="s0">, </span><span class="s1">month</span><span class="s0">, </span><span class="s1">dayOfMonth)</span><span class="s0">;</span>
+        <span class="s1">datePickerDialog.show()</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@Override</span>
+    <span class="s0">public boolean </span><span class="s1">onNavigationItemSelected(@NonNull MenuItem item) {</span>
+        <span class="s1">Fragment fragment = </span><span class="s0">null;</span>
+        <span class="s0">switch </span><span class="s1">(item.getItemId()) {</span>
+            <span class="s0">case </span><span class="s1">R.id.navigation_home:</span>
+                <span class="s1">fragment = </span><span class="s0">new </span><span class="s1">HomeFragment()</span><span class="s0">;</span>
+                <span class="s1">recyclerView.setVisibility(View.VISIBLE)</span><span class="s0">;</span>
+                <span class="s0">break;</span>
+            <span class="s0">case </span><span class="s1">R.id.navigation_pillbox:</span>
+                <span class="s1">fragment = </span><span class="s0">new </span><span class="s1">MedsFragment()</span><span class="s0">;</span>
+                <span class="s1">recyclerView.setVisibility(View.GONE)</span><span class="s0">;</span>
+                <span class="s0">break;</span>
+            <span class="s0">case </span><span class="s1">R.id.navigation_add:</span>
+                <span class="s1">Intent intent = </span><span class="s0">new </span><span class="s1">Intent(MainActivity.</span><span class="s0">this, </span><span class="s1">AddMedicament.</span><span class="s0">class</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">startActivity(intent)</span><span class="s0">;</span>
+                <span class="s0">break;</span>
+        <span class="s1">}</span>
+        <span class="s0">return </span><span class="s1">loadFragment(fragment)</span><span class="s0">;</span>
+    <span class="s1">}</span>
+    <span class="s0">private boolean </span><span class="s1">loadFragment(Fragment fragment) {</span>
+        <span class="s0">if </span><span class="s1">(fragment != </span><span class="s0">null</span><span class="s1">) {</span>
+            <span class="s1">getSupportFragmentManager()</span>
+                    <span class="s1">.beginTransaction()</span>
+                    <span class="s1">.replace(R.id.fragment_container</span><span class="s0">, </span><span class="s1">fragment)</span>
+                    <span class="s1">.commit()</span><span class="s0">;</span>
+            <span class="s0">return true;</span>
+        <span class="s1">}</span>
+        <span class="s0">return false;</span>
+    <span class="s1">}</span>
+    <span class="s0">public void </span><span class="s1">initPillList(String date){</span>
+        <span class="s1">pillNameData.clear()</span><span class="s0">;</span>
+        <span class="s1">pillTime.clear()</span><span class="s0">;</span>
+        <span class="s1">pillPhotoData.clear()</span><span class="s0">;</span>
+        <span class="s0">try </span><span class="s1">{</span>
+            <span class="s1">db = </span><span class="s0">new </span><span class="s1">Database(</span><span class="s0">this</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">ArrayList&lt;HomeResult&gt; homeResults = db.getPills()</span><span class="s0">;</span>
+            <span class="s0">for </span><span class="s1">(HomeResult pill : homeResults) {</span>
+                <span class="s0">if</span><span class="s1">(pill.getFrequency().equals(</span><span class="s2">&quot;Everyday&quot;</span><span class="s1">)) {</span>
+                    <span class="s1">pillNameData.add(pill.getMedName())</span><span class="s0">;</span>
+                    <span class="s1">pillPhotoData.add(pill.getPhotoId())</span><span class="s0">;</span>
+                    <span class="s1">pillTime.add(pill.getTime())</span><span class="s0">;</span>
+                <span class="s1">}</span>
+            <span class="s1">}</span>
+            <span class="s1">db.close()</span><span class="s0">;</span>
+        <span class="s1">} </span><span class="s0">catch </span><span class="s1">(Exception e) {</span>
+            <span class="s1">System.err.println(e)</span><span class="s0">;</span>
+        <span class="s1">}</span>
+
+    <span class="s1">}</span>
+<span class="s1">}</span>
+</pre>
+</body>
+</html>

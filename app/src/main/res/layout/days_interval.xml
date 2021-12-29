@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/txtDaysInterval"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/txtSetDaysIntervalTitle"
+        android:layout_marginStart="40dp"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="52dp" />
+
+    <ImageButton
+        android:id="@+id/minusInterval"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="34dp"
+        android:layout_marginEnd="8dp"
+        android:background="@null"
+        android:contentDescription="TODO"
+        android:minWidth="32dp"
+        android:minHeight="48dp"
+        android:src="@drawable/minus"
+        android:tint="@color/colorPrimary"
+        app:layout_constraintEnd_toStartOf="@+id/inputIntervalDays"
+        app:layout_constraintHorizontal_bias="0.888"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txtDaysInterval"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <EditText
+        android:id="@+id/inputIntervalDays"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="8dp"
+        android:textColor="@color/colorPrimary"
+        android:inputType="number"
+        android:text="every 2 days"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.479"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints="" />
+
+    <ImageButton
+        android:id="@+id/plusInterval"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="34dp"
+        android:src="@drawable/plus"
+        android:background="@null"
+        android:tint="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toEndOf="@+id/inputIntervalDays"
+        app:layout_constraintTop_toTopOf="@+id/txtDaysInterval" />
+
+    <TextView
+        android:id="@+id/cancelInterval"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/CANCEL"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/inputIntervalDays"
+        app:layout_constraintTop_toBottomOf="@+id/inputIntervalDays"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/setInterval"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/SET"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/plusInterval"
+        app:layout_constraintTop_toBottomOf="@+id/inputIntervalDays"
+        app:layout_constraintVertical_bias="0.0" />
+
+</android.support.constraint.ConstraintLayout>
